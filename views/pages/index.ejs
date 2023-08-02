@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head');%>
+<body>
+<div class="container">
+    
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1"><button class="btn btn-dark" onclick="logout()">Logout</button></span>
+        </div>
+      </nav>
+
+    <%- include('../partials/main');%>
+
+    <div class="d-flex justify-content-center mt-5">
+        <div class="d-flex flex-column text-center w-75">
+          <h2>Welcome <span class="text-primary"><%= user %></span></h2>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+        </div>
+      </div>
+
+    
+</div>
+  <script>
+    function logout() {
+      fetch('/logout', { method: 'GET' })
+        .then(response => {
+          // Redirect to the login page
+          window.location.href = '/login';
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  </script>
+</body>
+</html>
